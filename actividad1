@@ -1,0 +1,28 @@
+  //declarar variables
+            string nombre;
+            string edad;
+            string fechaNac;
+            string carrera;
+            string cierre;
+
+            Console.WriteLine("Bienvenidos a UMI/Universidad Coppel");
+            Console.WriteLine("\n\nIngresa los datos que acontinuacion se te piden: ");
+            Console.WriteLine("\n\nNombre completo: ");
+            nombre = Console.ReadLine();
+            Console.WriteLine("\nEdad: ");
+            edad = Console.ReadLine();  
+            Console.WriteLine("\nFecha de nacimiento (DD/MM/AAAA): ");
+            fechaNac = Console.ReadLine();
+            Console.WriteLine("\nCarrera a la que desea ingresar: ");
+            carrera = Console.ReadLine();
+
+            Console.WriteLine("\n\nGracias " + nombre + " por formar parte de UMI/Universidad Coppel. \nBienvenido a la carrera " + carrera + ".");
+            Console.WriteLine("\nNombre: " + nombre);
+            Console.WriteLine("Edad: " + edad);
+            Console.WriteLine("Fecha de nacimiento: " + fechaNac);
+            Console.WriteLine("Carrera que eligio: " + carrera);
+            Console.WriteLine("\n\n\n\n\n");
+            Console.ReadLine();
+        }
+    }
+}
