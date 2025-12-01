@@ -1,0 +1,245 @@
+    public partial class frmIngreso : Form
+    {
+        public frmIngreso()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmIngreso_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(txtContrasena.Text == "")
+            {
+                MessageBox.Show("Debe ingresar una contraseña para abrir la aplicacion");
+            }
+            else if(txtContrasena.Text == "12345678")
+            {
+                frmMenuPrin  frmMenuPrin = new frmMenuPrin();
+                frmMenuPrin.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Contraseña incorrecta");
+                txtContrasena.Clear();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+    public partial class frmMenuPrin : Form
+    {
+        public frmMenuPrin()
+        {
+            InitializeComponent();
+        }
+
+        private void saludoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.frmMenu frmMenu = new Formularios.frmMenu();
+            frmMenu.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void operacionesBasicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.frmOperaciones frmOperaciones = new Formularios.frmOperaciones();
+            frmOperaciones.Show();
+        }
+
+        private void datosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.frmDatos frmDatos = new Formularios.frmDatos();
+            frmDatos.Show();
+        }
+    }
+}
+
+
+private void Restar_Click_2(object sender, EventArgs e)
+{  
+ public partial class frmOperaciones : Form
+ {
+     public frmOperaciones()
+     {
+         InitializeComponent();
+     }
+
+     private void button1_Click(object sender, EventArgs e)
+     {
+         int resultado;
+         Clases.clsOperaciones clsOperaciones = new Clases.clsOperaciones();
+         resultado = clsOperaciones.Sumar(int.Parse(txtNumero1.Text), int.Parse(txtNumero2.Text));
+         txtResultado.Text = resultado.ToString();
+     }
+    int resultado;
+    Clases.clsRestar clsRestar = new Clases.clsRestar();
+    resultado = clsRestar.Restar (int.Parse(txtNumero3.Text), int.Parse(txtNumero4.Text));
+    txtResultado2.Text = resultado.ToString();
+}
+
+private void Multiplicar_Click(object sender, EventArgs e)
+{
+    int resultado;
+    Clases.clsMultiplicar clsMultiplicar = new Clases.clsMultiplicar();
+    resultado = clsMultiplicar.Multiplicar (int.Parse(txtNumero5.Text), int.Parse(txtNumero6.Text));
+    txtResultado3.Text = resultado.ToString();  
+}
+
+private void Dividir_Click(object sender, EventArgs e)
+{
+    int resultado;
+    Clases.clsDividir clsDividir = new Clases.clsDividir();
+    resultado = clsDividir.Dividir (int.Parse(txtNumero7.Text), int.Parse (txtNumero8.Text));
+    txtResultado4.Text = resultado.ToString();
+}
+
+private void Regresar_Click(object sender, EventArgs e)
+{
+    // Cierra el formulario actual
+    this.Close();
+}
+
+private void LimpiarDatos_Click(object sender, EventArgs e)
+{
+    txtNumero1.Text = "";
+    txtNumero2.Text = "";
+    txtNumero3.Text = "";
+    txtNumero4.Text = "";
+    txtNumero5.Text = "";
+    txtNumero6.Text = "";
+    txtNumero7.Text = "";
+    txtNumero8.Text = "";
+    txtResultado.Text = "";
+    txtResultado2.Text = "";
+    txtResultado3.Text = "";
+    txtResultado4.Text = "";
+    
+}  
+
+public partial class frmMenu : Form
+{
+    public frmMenu()
+    {
+        InitializeComponent();
+    }
+
+    private void btnsaludar_Click(object sender, EventArgs e)
+    {
+        Clases.clsMenu Menu = new Clases.clsMenu();
+        string miSaludo = Menu.Saludar(txtNombre.Text);
+        MessageBox.Show(miSaludo);
+    }
+
+    private void btnregresar_Click(object sender, EventArgs e)
+    {
+        // Cierra el formulario actual
+        this.Close();
+
+        public frmDatos()
+        {
+            InitializeComponent();
+        }
+
+        private void butGuardar_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombre.Text;
+            string apellidos = txtApellidos.Text;
+            string direccion = txtDireccion.Text;
+            string ciudad = txtCiudad.Text;
+            string fechaNacimiento = dateFechaNacimiento.Value.ToString("dd/MM/yyyy");
+            string estadoCivil = comEstadoCivil.Text;
+
+            string sexo = "";
+            if (rdoHombre.Checked) sexo = "Hombre";
+            if (rdoMujer.Checked) sexo = "Mujer";
+
+            string ruta = @"C:\DatosFormulario\datos.txt";
+
+            Directory.CreateDirectory(@"C:\DatosFormulario");
+
+            using (StreamWriter sw = new StreamWriter(ruta, true))
+            {
+                sw.WriteLine("---- REGISTRO ----");
+                sw.WriteLine("Nombre: " + nombre);
+                sw.WriteLine("Apellidos: " + apellidos);
+                sw.WriteLine("Dirección: " + direccion);
+                sw.WriteLine("Ciudad: " + ciudad);
+                sw.WriteLine("Fecha Nacimiento: " + fechaNacimiento);
+                sw.WriteLine("Estado Civil: " + estadoCivil);
+                sw.WriteLine("Sexo: " + sexo);
+                sw.WriteLine();
+            }
+
+            MessageBox.Show("Datos guardados correctamente.");
+        }
+
+        private void butRegresar_Click(object sender, EventArgs e)
+        {
+            // Cierra el formulario actual
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            // Enfermedad
+            string enfermedad = rdoSiEnfermedad.Checked ? combEnfermedades.Text : "No padece";
+
+            // Alergia
+            string alergia = rdoSiAlergias.Checked ? combAlergias.Text : "No tiene alergias";
+
+            // Operación
+            string operado = rdoSiOperado.Checked ? combOperaciones.Text : "No ha sido operado";
+
+            // Ejercicio
+            string ejercicio = rdoSiEjercicio.Checked ? combEjercicio.Text : "No realiza ejercicio";
+
+            // Depresión
+            string depresion = rdoSiDepresion.Checked ? "Sí" : "No";
+
+       
+            {
+                Console.WriteLine("---- DATOS CLÍNICOS ----");
+                Console.WriteLine("Enfermedad: " + enfermedad);
+                Console.WriteLine("Alergia: " + alergia);
+                Console.WriteLine("Operado: " + operado);
+                Console.WriteLine("Ejercicio: " + ejercicio);
+                Console.WriteLine("Depresión: " + depresion);
+                Console.WriteLine("-------------------------");
+                Console.WriteLine();
+            }
+
+            MessageBox.Show("Datos clínicos guardados correctamente.");
+        }
+
+        private void grouEnfermedades_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void rdoNoEnfermedad_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
