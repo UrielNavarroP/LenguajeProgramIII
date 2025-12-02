@@ -1,0 +1,77 @@
+ublic partial class frmRegistro : Form
+    {
+        public frmRegistro()
+        {
+            InitializeComponent();
+        }
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection cn = new SqlConnection("Data Source=CHELCHELIOS;Initial Catalog=AkirasBoutiques;Integrated Security=True;Encrypt=False"))
+            {
+              SqlDataAdapter da = SqlDataAdapter("Select * from cliente", cn);
+                da.SelectCommand.CommandType = CommandType.Text;
+
+                cn.Open();
+                da.Fill(dt);
+
+                dataTablaCliente.DataSource= dt;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection("Data Source=CHELCHELIOS;Initial Catalog=AkirasBoutiques;Integrated Security=True;Encrypt=False"))
+            {
+                SqlCommand cmd = new SqlCommand("Insert into cliente (id_cliente, nombre, apellido, fec_nac, telefono)\r\nVALUES (´"+ txtDNI.Text + "´, ´"+ txtNombres.Text +"´, '"+ txtApellidos.Text + "', ´"+ txtfec_nac.Text +"´, ´"+ txtTelefono.Text +"´)" ,cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("El usuario fue agregado exitosamente. ");
+                txtDNI.Clear();
+                txtNombres.Clear();
+                txtApellidos.Clear();
+                txtfec_nac.Clear();
+                txtTelefono.Clear();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection("Data Source=CHELCHELIOS;Initial Catalog=AkirasBoutiques;Integrated Security=True;Encrypt=False"))
+            {
+                SqlCommand cmd = new SqlCommand("Update cliente set nombre = ´" + txtNombres.Text + "´, apellidos = '" + txtApellidos.Text + "', fec_nac = ´" + txtfec_nac.Text + "´, telefono =´" + txtTelefono.Text + "´, id_cliente = ´"+ txtDNI.Text + "´", cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("El usuario fue actualizado exitosamente. ");
+                txtDNI.Clear();
+                txtNombres.Clear();
+                txtApellidos.Clear();
+                txtfec_nac.Clear();
+                txtTelefono.Clear();
+
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cn = new SqlConnection("Data Source=CHELCHELIOS;Initial Catalog=AkirasBoutiques;Integrated Security=True;Encrypt=False"))
+            {
+                SqlCommand cmd = new SqlCommand("Delete from Cliente where Dni = ´" + txtDNI.Text + "´", cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("El usuario fue eliminado exitosamente. ");
+                txtDNI.Clear();
+                txtNombres.Clear();
+                txtApellidos.Clear();
+                txtfec_nac.Clear();
+                txtTelefono.Clear();
+
+            }
+        }
+    }
+}
